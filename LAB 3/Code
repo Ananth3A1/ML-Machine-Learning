@@ -4,7 +4,7 @@ import numpy as np
 
 data = pd.read_csv("3-dataset.csv")
 features = [feat for feat in data]
-features.remove("answer")
+features.remove("Answer")
 
 class Node:
     def __init__(self):
@@ -17,7 +17,7 @@ def entropy(examples):
     pos = 0.0
     neg = 0.0
     for _, row in examples.iterrows():
-        if row["answer"] == "yes":
+        if row["Answer"] == "yes":
             pos += 1
         else:
             neg += 1
@@ -64,7 +64,7 @@ def ID3(examples, attrs):
             newNode = Node()
             newNode.isLeaf = True
             newNode.value = u
-            newNode.pred = np.unique(subdata["answer"])
+            newNode.pred = np.unique(subdata["Answer"])
             root.children.append(newNode)
         else:
             dummyNode = Node()
